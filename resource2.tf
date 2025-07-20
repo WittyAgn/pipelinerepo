@@ -18,12 +18,12 @@ resource "azurerm_resource_group" "rg" {
   location = "West Europe"
 }
 
-resource "azurerm_storage_account" "sa1" {
-  name                     = "sctjsa"
+resource "azurerm_storage_account" "sal" {
+  name                     = "sctjmp"
   resource_group_name      = "rg-resources3"
   location                 = "West Europe"
   account_tier             = "Standard"
   account_replication_type = "LRS"
-  depends_on = [ azurerm_storage_account.sa1 ]
+  depends_on = [ azurerm_storage_account.sal ]
 }
 
