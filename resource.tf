@@ -24,5 +24,6 @@ resource "azurerm_storage_account" "sa1" {
   location                 = "West Europe"
   account_tier             = "Standard"
   account_replication_type = "LRS"
+  depends_on = [ azurerm_storage_account.sa1 ]
 }
 
