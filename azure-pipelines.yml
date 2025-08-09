@@ -40,5 +40,11 @@ steps:
     workingDirectory: '$(workdir)'
     environmentServiceNameAzureRM: '$(azbaarm)'
 
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(workdir)'
+    backendServiceArm: '$(azbaarm)'
 
 
