@@ -12,10 +12,10 @@ steps:
     targetType: 'inline'
     script: 'Write-Host "Hello World"'
 
-#- task: PowerShell@2
-#  inputs:
-#    targetType: 'inline'
-#    script: 'az login'
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'az login'
 
 
 - task: TerraformTask@5
