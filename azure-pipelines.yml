@@ -1,19 +1,44 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-trigger:
-- main
-
-pool:
-  vmImage: ubuntu-latest
-
+pool: Wittyagent
+trigger: none
+variables:
+  workdir: 'C:\Devops\Witagnet\vsts-agent-win-x64-4.259.0\_work\1\s'
+  azbaarm:  'newfedcon'
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+
+- task: PowerShell@2
+  displayName: 'Powershell task'
+  inputs:
+    targetType: 'inline'
+    script: 'Write-Host "Hello World"'
+
+#- task: PowerShell@2
+#  inputs:
+#    targetType: 'inline'
+#    script: 'az login'
+
+
+- task: TerraformTask@5
+  displayName: 'Terraform init'
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(workdir)'
+    backendServiceArm: '$(azbaarm)'
+    backendAzureRmOverrideSubscriptionID: '5fbead97-423e-4814-809c-114db991d911'
+    backendAzureRmResourceGroupName: 'reg1'
+    backendAzureRmStorageAccountName: 'stornew420'
+    backendAzureRmContainerName: 'newcont'
+    backendAzureRmKey: 'def.tfstate'
+
+
+- task: TerraformTask@5
+  displayName: 'Terraform plan'
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: '$(workdir)'
+    environmentServiceNameAzureRM: '$(azbaarm)'
+
+
+
