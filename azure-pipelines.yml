@@ -1,7 +1,7 @@
 pool: Wittyagent
 trigger: none
 variables:
-  workdir: 'C:\Devops\Witagnet\vsts-agent-win-x64-4.259.0\_work\1\s'
+  workdir: 'C:\Devops\Witagnet\vsts-agent-win-x64-4.259.0\_work\2\s'
   azbaarm:  'newfedcon'
 steps:
 
