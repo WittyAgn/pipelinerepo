@@ -18,12 +18,18 @@ resource "azurerm_resource_group" "rg" {
   location = "West Europe"
 }
 
-resource "azurerm_storage_account" "sar" {
-  name                     = "stoage2"
+resource "azurerm_resource_group" "rga" {
+  name     = "rg-resources4"
+  location = "West Europe"
+}
+
+
+resource "azurerm_storage_account" "sardl" {
+  name                     = "stoage92"
   resource_group_name      = "rg-resources3"
   location                 = "West Europe"
   account_tier             = "Standard"
   account_replication_type = "LRS"
-  depends_on = [ azurerm_storage_account.sar ]
+  depends_on = [ azurerm_resource_group.rg ]
 }
 
